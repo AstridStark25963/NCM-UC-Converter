@@ -2,9 +2,9 @@
 
 
 a = Analysis(
-    ['C:/Users/Lenovo/Desktop/py_to_exe/convert_pack.py'],
+    ['convert_pack.py'],
     pathex=[],
-    binaries=[],
+    binaries=[('C:/Users/Lenovo/AppData/Local/Programs/Python/Python312/python.exe', '.')],
     datas=[],
     hiddenimports=[],
     hookspath=[],
@@ -18,21 +18,27 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
-    a.datas,
     [],
-    name='网易云缓存文件转码工具',
+    exclude_binaries=True,
+    name='NCM UC File Converter',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    upx_exclude=[],
-    runtime_tmpdir=None,
     console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['C:\\Users\\Lenovo\\Desktop\\py_to_exe\\music.ico'],
+    icon=['music.ico'],
+)
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name='NCM UC File Converter',
 )
